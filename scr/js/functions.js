@@ -37,3 +37,13 @@ function makeMLocal(E, F, J){
 function lenthRod(x1, y1, x2, y2){
     return L = Math.sqrt(pow((x2-x1), 2) + pow((y2-y1), 2));
 }
+
+function makeSina(x1, y1, x2, y2){
+    return sina = (y2 - y1)/Math.sqrt(pow((x2-x1), 2) + pow((y2-y1), 2));
+
+}
+
+function makeCosa(x1, y1, x2, y2){
+    return cosa = (x2 - x1)/Math.sqrt(pow((x2-x1), 2) + pow((y2-y1), 2));
+
+}
