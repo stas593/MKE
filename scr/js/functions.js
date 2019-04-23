@@ -47,3 +47,13 @@ function makeCosa(x1, y1, x2, y2){
     return cosa = (x2 - x1)/Math.sqrt(pow((x2-x1), 2) + pow((y2-y1), 2));
 
 }
+
+function makeMGlobal(Mlocal, sina, cosa){
+    var n = 6, m = 6;
+    var MGlobal = [];
+    for (var i = 0; i < m; i++){
+        MGlobal[i] = [];
+        for (var j = 0; j < n; j++){
+            MGlobal[i][j] = 0;
+    }}
+}
