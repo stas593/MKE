@@ -1,87 +1,65 @@
-function getCoords(elem) { 
-// (1) 
-var box = elem.getBoundingClientRect(); 
+var example = document.getElementById("example"),
+          ctx = example.getContext('2d');
+            example.width  = 500;
+            example.height = 500;
+            ctx.lineWidth = 0.1 ;
+            var n=0;
+            var p=0;
+            var v=0;
+            var k=0;
+            for (var i=0; i<26; i++)
+            {
+                ctx.strokeRect((20+n), 0, 0, 500);
+                for (var l=0;l<26;l++, k+=20){
+                ctx.beginPath();
+                ctx.fillStyle = "rgb(0,0,0)";
+                var list = document.getElementById('main');
+                var div = document.createElement('Div');
+                var point = document.getElementsByClassName('point');
+		        list.appendChild(div);
+                $(div).toggleClass('point');
+                // point.style.left=(parseInt(point.style.left,10)+50)+"px";
+                
+                
+                // attr('class','point');
 
-var body = document.body; 
-var docEl = document.documentElement; 
+                // ctx.arc (n,(500-v),1,0,2*Math.PI,true);
+                ctx.fill();
+                
+                ctx.closePath();
+                v+=20;
+                if (l==25){
+                    v=0;
+                }
+                }               
+                
+                n+=20;
+            }
+            for (var y=0; y<25; y++)
+            {
+                ctx.strokeRect(0,(20+p),500,0);
+                p+=20;
 
-// (2) 
-var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop; 
-var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft; 
+            }
+                 
+            var z=0;
 
-// (3) 
-var clientTop = docEl.clientTop || body.clientTop || 0; 
-var clientLeft = docEl.clientLeft || body.clientLeft || 0; 
-
-// (4) 
-var top = box.top + scrollTop - clientTop; 
-var left = box.left + scrollLeft - clientLeft; 
-
-return { 
-top: top, 
-left: left 
-}; 
-}
-
-var height = 500, 
-    width = 500, 
-    margin = 30;       
-     
-var svg = d3.select("body").append("svg")
-        .attr("class", "axis")
-        .attr("width", width)
-        .attr("height", height);
- 
-// длина оси X= ширина контейнера svg - отступ слева и справа
-var xAxisLength = width - 2 * margin;     
-  
-// длина оси Y = высота контейнера svg - отступ сверху и снизу
-var yAxisLength = height - 2 * margin;
-    
-// функция интерполяции значений на ось Х  
-var scaleX = d3.scale.linear()
-            .domain([0, 100])
-            .range([0, xAxisLength]);
-var scaleY = d3.scale.linear()
-            .domain([100, 0])
-            .range([0, yAxisLength]);
-             
-// создаем ось X   
-var xAxis = d3.svg.axis()
-             .scale(scaleX)
-             .orient("bottom");    
-var yAxis = d3.svg.axis()
-             .scale(scaleY)
-             .orient("left");
-              
- // отрисовка оси               
-svg.append("g")       
-     .attr("class", "x-axis")
-     .attr("transform",  // сдвиг оси вниз и вправо
-         "translate(" + margin + "," + (height - margin) + ")")
-    .call(xAxis);
-             
-svg.append("g")       
-    .attr("class", "y-axis")
-    .attr("transform", // сдвиг оси вниз и вправо на margin
-            "translate(" + margin + "," + margin + ")")
-    .call(yAxis);
- 
-// создаем набор вертикальных линий для сетки   
-d3.selectAll("g.x-axis g.tick")
-    .append("line") // добавляем линию
-    .classed("grid-line", true) // добавляем класс
-    .attr("x1", 0)
-    .attr("y1", 0)
-    .attr("x2", 0)
-    .attr("y2", - (yAxisLength));
-     
-// рисуем горизонтальные линии 
-d3.selectAll("g.y-axis g.tick")
-    .append("line")
-    .classed("grid-line", true)
-    .attr("x1", 0)
-    .attr("y1", 0)
-    .attr("x2", xAxisLength)
-    .attr("y2", 0);
- 
+            $("#example").click(function(){
+                
+                if (z==0){
+                var x0=event.offsetX;
+                var y0=event.offsetY;
+                ctx.moveTo(x0, y0);
+                ctx.lineWidth = 1;
+                z++;
+                }
+                else
+                {
+                    var x=event.offsetX;
+                            var y=event.offsetY;
+                ctx.lineTo(event.offsetX, event.offsetY);
+                ctx.stroke();
+                ctx.lineWidth = 1;
+                z--;
+                }
+            });
