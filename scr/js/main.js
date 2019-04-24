@@ -20,9 +20,8 @@ var example = document.getElementById("example"),
                 var list = document.getElementById('points');
                 var div = document.createElement('Div');
 		        list.appendChild(div);
-                $(div).toggleClass('point' + cl1);
                 // var point = document.getElementsByClassName('point' + (cl-1));
-                $('' + (cl1++)).css({"position":"absolute", 
+                $($(div).toggleClass('point')).css({"position":"absolute", 
                     "height":"5px", "width":"5px", 
                     "background-color":"black", 
                     "left": v + "px", 
