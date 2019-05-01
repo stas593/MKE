@@ -13,7 +13,7 @@ var example = document.getElementById("example"),
         for (var i=0; i<26; i++)
         {
             ctx.strokeRect((20+n), 0, 0, 500);
-            z += 20
+            z += 20;
             for (var l=0;l<26;l++, k+=20){
                 ctx.beginPath();
                 ctx.fillStyle = "rgb(0,0,0)";
@@ -22,11 +22,9 @@ var example = document.getElementById("example"),
 		        list.appendChild(div);
                 // var point = document.getElementsByClassName('point' + (cl-1));
                 $($(div).toggleClass('point')).css({"position":"absolute", 
-                    "height":"5px", "width":"5px", 
-                    "background-color":"black", 
+                    "height":"2px", "width":"2px",  
                     "left": v + "px", 
-                    "bottom": z + "px",
-                    "border-radius": "50%",
+                    "bottom": z+4 + "px",
                     "pointer-events": "none"})
                 v+= 20
                 ctx.fill();
@@ -45,24 +43,37 @@ var example = document.getElementById("example"),
                 ctx.strokeRect(0,(20+p),500,0);
                 p+=20;
             }   
-            var z=0;
-
+           
+var m = 0;
+var x0 = 0;
+var y0 = 0;
 $("#example").click(function(){
-    
-    if (z==0){
-    var x0=event.offsetX;
-    var y0=event.offsetY;
-    ctx.moveTo(x0, y0);
-    ctx.lineWidth = 1;
-    z++;
+    var dlina = 0;
+    var cat1 = 0;
+    var cat2 = 0;
+    var sin = 0;
+    if (m==0){
+        x0=event.offsetX;
+        y0=event.offsetY;
+        ctx.moveTo(x0, y0);
+        ctx.lineWidth = 1;
+        m++;
     }
     else
     {
         var x=event.offsetX;
-                var y=event.offsetY;
-    ctx.lineTo(event.offsetX, event.offsetY);
-    ctx.stroke();
-    ctx.lineWidth = 1;
-    z--;
+        var y=event.offsetY;
+        ctx.lineTo(event.offsetX, event.offsetY);
+        ctx.stroke();
+        ctx.lineWidth = 1;
+        m--;
+    cat1=Math.abs((x-x0));
+    cat2=Math.abs((y-y0));
+    dlina=Math.pow(cat1*cat1+cat2*cat2,1/2);
+    sin=(Math.sin(cat2/dlina)*180)/3,14;
+    console.log(sin);
+    console.log(cat1);
+    console.log(cat2);
+    console.log(dlina);
     }
 });
