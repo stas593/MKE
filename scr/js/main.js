@@ -70,10 +70,10 @@ $("#example").click(function(){
     cat1=Math.abs((x-x0));
     cat2=Math.abs((y-y0));
     dlina=Math.pow(cat1*cat1+cat2*cat2,1/2);
-    sin=(Math.sin(cat2/dlina)*180)/3,14;
-    console.log(sin);
-    console.log(cat1);
-    console.log(cat2);
-    console.log(dlina);
+    sin=Math.round( Math.atan(cat2 / cat1) * ( 180 / Math.PI ) );
+    console.log("Угол  " + sin);
+    console.log("Катет 1 "+cat1);
+    console.log("Катет 2 "+cat2);
+    console.log("Длина "+dlina);
     }
 });
