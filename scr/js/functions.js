@@ -48,12 +48,52 @@ function makeCosa(x1, y1, x2, y2){
 
 }
 
+function MultiplyMatrix(A,B)
+{
+    var rowsA = A.length, colsA = A[0].length,
+        rowsB = B.length, colsB = B[0].length,
+        C = [];
+    if (colsA != rowsB) return false;
+    for (var i = 0; i < rowsA; i++) C[ i ] = [];
+    for (var k = 0; k < colsB; k++)
+     { for (var i = 0; i < rowsA; i++)
+        { var t = 0;
+          for (var j = 0; j < rowsB; j++) t += A[i][j]*B[j][k];
+          C[i][k] = t;
+        }
+     }
+    return C;
+}
+
 function makeMGlobal(Mlocal, sina, cosa){
     var n = 6, m = 6;
+    var MatrixV = [];
+    var TransV = [];
     var MGlobal = [];
     for (var i = 0; i < m; i++){
-        MGlobal[i] = [];
+        MatrixV[i] = [];
         for (var j = 0; j < n; j++){
-            MGlobal[i][j] = 0;
+            MatrixV[i][j] = 0;
     }}
+    MatrixV[0][0] = cosa;
+    MatrixV[0][1] = sina;
+    MatrixV[1][0] = -sina;
+    MatrixV[1][1] = cosa;
+    MatrixV[1][1] = cosa;
+    MatrixV[2][2] = 1;
+    MatrixV[0][0] = cosa;
+    MatrixV[4][3] = sina;
+    MatrixV[3][4] = -sina;
+    MatrixV[3][3] = cosa;
+    MatrixV[4][4] = cosa;
+    MatrixV[5][5] = 1;
+
+    var m = MatrixV.length, n = MatrixV[0].length, TransV = [];
+        for (var i = 0; i < n; i++) { 
+            TransV[ i ] = [];
+            for (var j = 0; j < m; j++) TransV[i][j] = MatrixV[j][i];
+         }
+
+    MGlobal = MultiplyMatrix(TransV,MultiplyMatrix(Mlocal,MatrixV))
+
 }
