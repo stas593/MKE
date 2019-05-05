@@ -43,7 +43,7 @@ var example = document.getElementById("example"),
                 ctx.strokeRect(0,(20+p),500,0);
                 p+=20;
             }   
-           
+        
 var m = 0;
 var x0 = 0;
 var y0 = 0;
@@ -76,4 +76,51 @@ $("#example").click(function(){
     console.log("Катет 2 "+cat2);
     console.log("Длина "+dlina);
     }
+});
+$(".inputs").hide();
+$(".loc").click(function(){
+    $(".inputs").show();
+    $(".input_button").click(function(){  
+    F=document.getElementById("F").value;
+    J=document.getElementById("J").value;
+    E=document.getElementById("E").value;
+    var n = 6, m = 6;
+    var MLocal = [];
+        for (var i = 0; i < m; i++){
+            MLocal[i] = [];
+            for (var j = 0; j < n; j++){
+                MLocal[i][j] = 0;
+        }}
+        MLocal[0][0] = (E*F)/1;
+        MLocal[0][1] = 0;
+        MLocal[0][2] = 0;
+        MLocal[0][3] = -(E*F)/1;
+        MLocal[0][4] = 0;
+        MLocal[0][5] = 0;
+        MLocal[1][1] = (12*E*J)/Math.pow(1,3);
+        MLocal[1][2] = (6*E*J)/Math.pow(1,2);
+        MLocal[1][3] = 0;
+        MLocal[1][4] = -(12*E*J)/Math.pow(1,3);
+        MLocal[1][5] = (6*E*J)/Math.pow(1,2);
+        MLocal[2][2] = (4*E*J)/1;
+        MLocal[2][3] = 0;
+        MLocal[2][4] = -(6*E*J)/Math.pow(1,2);
+        MLocal[2][5] = (2*E*J)/1;
+        MLocal[3][3] = (E*F)/1;
+        MLocal[3][4] = 0;
+        MLocal[3][5] = 0;
+        MLocal[4][4] = (12*E*J)/Math.pow(1,3);
+        MLocal[4][5] = -(6*E*J)/Math.pow(1,2);
+        MLocal[5][5] = (4*E*J)/1;
+        for (var i = 0; i < m; i++){
+            for (var j = 0, k=0; j < n - k++; j++){
+                MLocal[i][j] = MLocal[j][i];
+        }
+    }
+    for (var i = 0; i < m; i++){
+        for (var j = 0; j < n; j++){
+            console.log(MLocal[i][j]);
+    }
+}
+});
 });

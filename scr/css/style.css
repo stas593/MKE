@@ -1,3 +1,6 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
 .axis path, .axis line {
     fill: none;
     stroke: #333;
@@ -54,4 +57,71 @@
 canvas{
     /*margin-bottom: 2.5px;
     margin-right: 2.5px;*/
+}
+.nav_menu{
+    display: flex;
+    flex-direction: column;
+}
+.buttons{
+    height: 2.5rem;
+    color: white;
+    border-radius: 0.5rem;
+    width: 22rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex; 
+    background: #5584ff;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    cursor: pointer;
+}
+.top_block{
+    display: flex;
+    justify-content: space-between;
+    width: 60rem;
+}
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;    
+}
+.inputs{
+    width: 60rem;
+    background: #0e1a35;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inputs input{
+    display: flex;
+    border-radius: 0.5rem;
+    padding-left: 0.5rem;
+    width: 10rem;
+    height: 1.5rem;
+    border: 1px solid #5584ff;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.input_button{
+    display: flex;
+    border-radius: 0.5rem;
+    width: 9rem;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    font-size: 1.3rem;
+    color: white;
+    cursor: pointer;
+    background:  #5584ff;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }

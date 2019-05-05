@@ -4,20 +4,25 @@
 	<meta charset="UTF-8">
 	<title>МКЭ</title>
 	<link rel="stylesheet" href="css/style.css">
-	<script src="js/d3.v3.min.js"> </script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 </head>
 <body id="main">
-	<canvas id='example'>Обновите браузер</canvas>
-	<div id="points"></div>
-	
+	<div class="top_block">
+			<canvas id='example'>Обновите браузер</canvas>
+			<div id="points"></div>
+			<div class="nav_menu">
+					<a class="buttons loc">Матрица в локальной системе координат</a>
+					<a class="buttons glob">Матрица в глобальной системе координат</a>
+	</div>
+</div>
+	<div class="inputs">
+		<input id= "F" placeholder="Введите F">
+		<input id="J" placeholder="Введите J">
+		<input id="E" placeholder="Введите E">
+		<a class="input_button">Рассчитать</a>
+	</div>
 	<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
-	<script type="text/javascript" src="js/wz_jsgraphics.js"></script>	
 	<script type="text/javascript" src="js/main.js"></script>
-	<script>
-	var cnv = document.getElementById("example");
-	var jg = new jsGraphics(cnv);
-		jg.drawLine(10,113,220,55);
-</script>
 
 </body>
 
