@@ -94,6 +94,6 @@ function makeMGlobal(Mlocal, sina, cosa){
             for (var j = 0; j < m; j++) TransV[i][j] = MatrixV[j][i];
          }
 
-    MGlobal = MultiplyMatrix(TransV,MultiplyMatrix(Mlocal,MatrixV))
+    MGlobal = MultiplyMatrix(TransV,MultiplyMatrix(Mlocal,MatrixV));
 
 }
