@@ -21,7 +21,7 @@ var example = document.getElementById("example"),
                 var div = document.createElement('Div');
 		        list.appendChild(div);
                 // var point = document.getElementsByClassName('point' + (cl-1));
-                $($(div).toggleClass('point')).css({"position":"absolute", 
+                $($(div).toggleClass('point')).css({ 
                     "height":"2px", "width":"2px",  
                     "left": v + "px", 
                     "bottom": z+4 + "px",
@@ -77,10 +77,12 @@ $("#example").click(function(){
     console.log("Длина "+dlina);
     }
 });
+$('#table-matrix').hide();
 $(".inputs").hide();
 $(".loc").click(function(){
     $(".inputs").show();
-    $(".input_button").click(function(){  
+    $(".input_button").click(function(){
+    $('#table-matrix').show(); 
     F=document.getElementById("F").value;
     J=document.getElementById("J").value;
     E=document.getElementById("E").value;
@@ -119,7 +121,10 @@ $(".loc").click(function(){
     }
     for (var i = 0; i < m; i++){
         for (var j = 0; j < n; j++){
-            console.log(MLocal[i][j]);
+            var list = document.getElementById('table-matrix');
+            var div = document.createElement('Div');
+            list.appendChild(div).innerHTML = MLocal[i][j];
+            // document.getElementById('table-matrix').innerHTML= MLocal[i][j];
     }
 }
 });
