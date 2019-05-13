@@ -16,6 +16,9 @@
         var y0 = 0; 
         var q = 0;
         var w = 0;
+        var pointx = [];
+        var pointy = [];
+        var pas = [];
         for (var i=0; i<26; i++)
         {
             ctx.strokeRect((20+n), 0, 0, 500);
@@ -25,6 +28,7 @@
                 ctx.fillStyle = "rgb(0,0,0)";
                 var list = document.getElementById('points');
                 var div = document.createElement('a');
+                
 		        list.appendChild(div);
                 // var point = document.getElementsByClassName('point' + (cl-1));
                 $($(div).toggleClass('point' + ' ' + cl1++)).css({ 
@@ -32,10 +36,15 @@
                     "left": v + "px", 
                     "top": z-20 + "px",
                     })
-                v+= 20
+                var pas=document.querySelector('.point');
+                pas.setAttribute('x', v);
+                pas.setAttribute('y', z-20);
+                // pointx[cl1]=v;
+                // pointy[cl1]=z-20;
+                    // console.log('x' + pointx[cl1]);
+                    // console.log('y' + pointy[cl1]);
+                v+= 20;
                 ctx.fill();
-                q[i]=v; // x ось
-                w[l]=z-20 // y ось
                 ctx.closePath();
                 if (l==25){
                     v=0;
@@ -50,7 +59,8 @@
                 ctx.strokeRect(0,(20+p),500,0);
                 p+=20;
             }   
-        
+
+           
 
 $(".point").click(function(){
     calcCosSin();
