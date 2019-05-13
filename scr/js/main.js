@@ -1,4 +1,5 @@
-var example = document.getElementById("example"),
+
+    var example = document.getElementById("example"),
     ctx = example.getContext('2d');
         example.width  = 500;
         example.height = 500;
@@ -9,7 +10,12 @@ var example = document.getElementById("example"),
         var k=0;
         var cl = 0;
         var cl1 = 0;
-        var z = 0
+        var z = 0;
+        var m = 0;
+        var x0 = 0;
+        var y0 = 0; 
+        var q = 0;
+        var w = 0;
         for (var i=0; i<26; i++)
         {
             ctx.strokeRect((20+n), 0, 0, 500);
@@ -18,17 +24,18 @@ var example = document.getElementById("example"),
                 ctx.beginPath();
                 ctx.fillStyle = "rgb(0,0,0)";
                 var list = document.getElementById('points');
-                var div = document.createElement('Div');
+                var div = document.createElement('a');
 		        list.appendChild(div);
                 // var point = document.getElementsByClassName('point' + (cl-1));
                 $($(div).toggleClass('point')).css({ 
-                    "height":"2px", "width":"2px",  
+                    "height":"2.4px", "width":"2.4px",  
                     "left": v + "px", 
-                    "bottom": z+4 + "px",
-                    "pointer-events": "none"})
+                    "top": z-20 + "px",
+                    })
                 v+= 20
                 ctx.fill();
-                
+                q[i]=v; // x ось
+                w[l]=z-20 // y ось
                 ctx.closePath();
                 if (l==25){
                     v=0;
@@ -44,10 +51,8 @@ var example = document.getElementById("example"),
                 p+=20;
             }   
         
-var m = 0;
-var x0 = 0;
-var y0 = 0;
-$("#example").click(function(){
+
+$(".point").click(function(){
     calcCosSin();
 });
 
@@ -184,17 +189,23 @@ var dlina = 0;
     var cosj = 0;
     var ugol = 0;
     if (m==0){
-        x0=event.offsetX;
-        y0=event.offsetY;
+        // x0=event.offsetX;
+        // y0=event.offsetY;
+     x0=$('#example').offset().left;
+     y0=$('#example').offset().top;
+        console.log ('приняли' + x0 + 'и' + y0);
         ctx.moveTo(x0, y0);
         ctx.lineWidth = 1;
         m++;
     }
     else
     {
-        var x=event.offsetX;
-        var y=event.offsetY;
-        ctx.lineTo(event.offsetX, event.offsetY);
+     x=$('#example').offset().left;
+     y=$('#example').offset().top;
+        // var x=event.offsetX;
+        // var y=event.offsetY;
+        console.log ('приняли второе' + x + 'и' + y);
+        ctx.lineTo(x, y);
         ctx.stroke();
         ctx.lineWidth = 1;
         m--;

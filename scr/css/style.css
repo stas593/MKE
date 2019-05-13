@@ -44,15 +44,9 @@ body{
     -o-border-radius:50%    ;
     background: #000;
 }
-.point:hover{
-    background: red;
-    width: 3px;
-    height: 3px;
-}
+
 #points{
     position:absolute;
-    
-    
 }
 canvas{
     /*margin-bottom: 2.5px;
@@ -156,4 +150,10 @@ body{
     display: flex;
     justify-content: center;
     text-align: center;
+}
+.point:hover{
+    width: 5px !important;
+    height: 5px !important;
+    background: red;
+    cursor: pointer;
 }
