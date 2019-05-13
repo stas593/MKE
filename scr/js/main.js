@@ -27,7 +27,7 @@
                 var div = document.createElement('a');
 		        list.appendChild(div);
                 // var point = document.getElementsByClassName('point' + (cl-1));
-                $($(div).toggleClass('point')).css({ 
+                $($(div).toggleClass('point' + ' ' + cl1++)).css({ 
                     "height":"2.4px", "width":"2.4px",  
                     "left": v + "px", 
                     "top": z-20 + "px",
